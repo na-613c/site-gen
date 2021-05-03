@@ -1,6 +1,5 @@
 import React from 'react';
-import { Input, Select } from 'antd';
-import { SettingOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 
 
 const URLinput = () => {

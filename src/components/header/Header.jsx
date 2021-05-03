@@ -23,12 +23,12 @@ const Header = () => {
         <PageHeader
             title="Генератор сайтов"
             extra={[
-                <NavLink to={MAIN_PAGE}>Главная</NavLink>,
-                user && <NavLink to={CONSTRUCTOR_PAGE}>Конструктор</NavLink>,
+                <NavLink to={MAIN_PAGE} key='1'>Главная</NavLink>,
+                user && <NavLink to={CONSTRUCTOR_PAGE} key='2'>Конструктор</NavLink>,
                 user ?
-                    <Button onClick={() => auth.signOut()} variant={"outlined"}>Выйти</Button>
+                    <Button onClick={() => auth.signOut()} key='3' variant={"outlined"}>Выйти</Button>
                     :
-                    <Button onClick={login} type="primary">Войти</Button>,
+                    <Button onClick={login} type="primary" key='4'>Войти</Button>,
             ]} />
     );
 }

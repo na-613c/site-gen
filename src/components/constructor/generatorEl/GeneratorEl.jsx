@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Collapse } from 'antd';
+import { Row, Col, Collapse } from 'antd';
 import { Context } from '../../../index'
 import { observer } from 'mobx-react-lite'
-
+import ElementForm from './ElementForm'
+import Animate from 'rc-animate';
 
 const { Panel } = Collapse;
 
@@ -12,12 +13,14 @@ const GeneratorEl = () => {
 
     const { tmpPageService } = store;
 
+    let pageDom = tmpPageService.getPageDOM();
+
     const elements = tmpPageService.elements.map((el, id) => {
         return (
             <Panel header={el.title} key={id}>
                 {el.content.map((cont, id) => {
                     return (
-                        <p key={id} onClick={() => cont.content()}>
+                        <p key={id} onClick={() => cont.content(cont.title)}>
                             {cont.title}
                         </p>
                     )
@@ -26,19 +29,38 @@ const GeneratorEl = () => {
         )
     })
 
-    console.log(tmpPageService)
+    const pageDomElements = pageDom.map((el) => {
+        return (
 
-    function callback(key) {
-        // console.log(key);
-    }
+            <ElementForm
+                pageDom={el}
+                key={el.id}
+                removeElement={tmpPageService.removeElement}
+                renderPageDOM={tmpPageService.renderPageDOM}
+            />
+
+        )
+    })
 
     return (
-        <div>
-            <Collapse onChange={callback}>
-                {elements}
-            </Collapse>
-            <button onClick={() => tmpPageService.saveBtn()}>111111111</button>
-        </div>
+        <Row>
+            <Col span={12}>
+                <Collapse>
+                    {elements}
+                </Collapse>
+                <button onClick={() => tmpPageService.saveBtn()}>111111111</button>
+            </Col>
+            <Col span={12}>
+                <Animate
+                    transitionName="fade"
+                    component="div"
+                >
+                    {pageDomElements}
+                </Animate>
+
+            </Col>
+        </Row>
+
 
     );
 }

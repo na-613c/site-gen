@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../index'
+import { observer } from 'mobx-react-lite'
 
 
 const TmpPage = () => {
 
-    let test = '<button class="ant-btn ant-btn-primary">1234</button>'
-    let a = < div className="Container" dangerouslySetInnerHTML={{
+    const { store } = useContext(Context)
+
+    const { tmpPageService } = store;
+
+    const text = tmpPageService.getPageDOMtoString;
+
+    console.log(text)
+
+    let a = <div dangerouslySetInnerHTML={{
         __html:
-            test
+            text
     }}>
     </div >
 
     return (
         <div>
-            TmpPage
             {a}
         </div>
     );
 }
 
-export default React.memo(TmpPage);
+export default React.memo(observer(TmpPage));
+
+

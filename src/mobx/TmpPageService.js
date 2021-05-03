@@ -19,11 +19,6 @@ class ElementDOM {
     url
     DOMtoString = '';
 
-    // _generateString = () => {
-    //     let props = { content: this.content, url: this.url }
-    //     this.DOMtoString = generateElement[this.key](props)
-    // }
-
     onChangeContent = (value) => {
         this.content = value;
     }
@@ -42,6 +37,7 @@ class TmpPageService {
 
     pageDOM = [];
     pageDOMtoString = [];
+    url = ''
 
     renderPageDOM = () => {
         this.pageDOMtoString = this.pageDOM.map((el) => {
@@ -53,10 +49,7 @@ class TmpPageService {
         })
     }
 
-    _addObj = (key, title, url = false) => {
-        let elementDOM = new ElementDOM(this._getUniqKey(), key, url, title)
-        this.pageDOM.push(elementDOM)
-    }
+    setUrl = (value) => this.url = value
 
     getPageDOM = () => this.pageDOM
 
@@ -70,11 +63,15 @@ class TmpPageService {
         return max + 1;
     }
 
+    _addObj = (key, title, url = false) => {
+        let elementDOM = new ElementDOM(this._getUniqKey(), key, url, title)
+        this.pageDOM.push(elementDOM)
+    }
 
     saveBtn = () => {
         // console.log(this.pageDOM)
 
-        console.log(this.pageDOMtoString, ' getPageDOMtoString')
+        console.log(this.url, ' URL:::::::')
 
     }
 
@@ -163,9 +160,6 @@ class TmpPageService {
             ]
         }
     ]
-
-
-
 
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ResultPage from './ResultPage/ResultPage';
-import URLinput from './URLinput/URLinput'
+import URLinput from './generatorEl/URLinput/URLinput'
 import { Row, Col } from 'antd';
 import GeneratorEl from './generatorEl/GeneratorEl';
 

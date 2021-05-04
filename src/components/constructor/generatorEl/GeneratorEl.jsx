@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Row, Col, Collapse } from 'antd';
+import { Row, Col, Collapse, Button } from 'antd';
 import { Context } from '../../../index'
 import { observer } from 'mobx-react-lite'
-import ElementForm from './ElementForm'
+import ElementForm from './ElementForm/ElementForm'
 import Animate from 'rc-animate';
 
 const { Panel } = Collapse;
@@ -48,7 +48,14 @@ const GeneratorEl = () => {
                 <Collapse>
                     {elements}
                 </Collapse>
-                <button onClick={() => tmpPageService.saveBtn()}>111111111</button>
+                <Button
+                    style={{ marginTop: 20 }}
+                    type="primary"
+                    onClick={() => tmpPageService.saveBtn.onClick()}
+                    disabled={!tmpPageService.saveBtn.isValid}
+                >
+                    Создать
+                    </Button>
             </Col>
             <Col span={12}>
                 <Animate

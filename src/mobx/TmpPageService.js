@@ -1,33 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import generateElement from "../utils/constructElements"
-
-
-class ElementDOM {
-
-    constructor(id, key, url, title) {
-        this.id = id
-        this.key = key
-        this.title = title
-        this.isHaveUrl = url
-    }
-
-    isHaveUrl
-    id
-    key
-    title
-    content
-    url
-    DOMtoString = '';
-
-    onChangeContent = (value) => {
-        this.content = value;
-    }
-
-    onChangeURL = (value) => {
-        this.url = value;
-    }
-
-}
+import validation from "../utils/validationSave"
+import ElementDOM from "../model/ElementDOM"
 
 
 class TmpPageService {
@@ -47,9 +21,14 @@ class TmpPageService {
                 string: generateElement[el.key](props)
             }
         })
+
+        this.saveBtn = { ...this.saveBtn, isValid: validation(this.url, this.getPageDOM()) }
     }
 
-    setUrl = (value) => this.url = value
+    setUrl = (value) => {
+        this.url = value;
+        this.saveBtn = { ...this.saveBtn, isValid: validation(this.url, this.getPageDOM()) }
+    }
 
     getPageDOM = () => this.pageDOM
 
@@ -66,13 +45,12 @@ class TmpPageService {
     _addObj = (key, title, url = false) => {
         let elementDOM = new ElementDOM(this._getUniqKey(), key, url, title)
         this.pageDOM.push(elementDOM)
+        this.saveBtn = { ...this.saveBtn, isValid: validation(this.url, this.getPageDOM()) }
     }
 
-    saveBtn = () => {
-        // console.log(this.pageDOM)
-
-        console.log(this.url, ' URL:::::::')
-
+    saveBtn = {
+        isValid: validation(this.url, this.getPageDOM()),
+        onClick: () => { console.log(this.url, ' URL:::::::') }
     }
 
     elements = [

@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import s from './ReultPage.module.css'
-import { Context } from '../../../index'
-import { observer } from 'mobx-react-lite'
 import parse from 'html-react-parser';
 import Animate from 'rc-animate';
 
-const ResultPage = () => {
-    const { store } = useContext(Context)
-    const pageDOMtoString = store.tmpPageService.pageDOMtoString
+const ResultPage = ({ pageDOMtoString}) => {
+
     const text = pageDOMtoString.map((el) => <div key={el.id}>{parse(el.string || '')}</div>);
 
     return (
@@ -24,4 +21,4 @@ const ResultPage = () => {
     );
 }
 
-export default React.memo(observer(ResultPage));
+export default React.memo(ResultPage);

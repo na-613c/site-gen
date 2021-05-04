@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Input, Form } from 'antd';
-import { Context } from '../../../../index'
-import { observer } from 'mobx-react-lite'
 
 
+const URLinput = ({ url, setUrl }) => {
 
+    const [form] = Form.useForm();
 
-const URLinput = () => {
-    const { store } = useContext(Context)
+    useEffect(() => {
+        (url === '') && form.resetFields();
+    }, [url, form]);
 
     const onChangeUrl = ({ target: { value } }) => {
-        store.tmpPageService.setUrl(value)
+        setUrl(value)
     }
 
     const getStatusUrl = (url) => {
@@ -27,13 +28,13 @@ const URLinput = () => {
         }
     }
 
-    let field = getStatusUrl(store.tmpPageService.url);
+    let field = getStatusUrl(url);
 
     return (
-        <Form style={{
-            display: 'flex',
-            alignItems: 'center'
-        }}>
+        <Form
+            style={{ display: 'flex', alignItems: 'center' }}
+            form={form}
+        >
             <Form.Item
                 tooltip="По этой ссылке будет распологаться Ваш сайт."
                 name="website"
@@ -54,4 +55,4 @@ const URLinput = () => {
     );
 }
 
-export default React.memo(observer(URLinput));
+export default React.memo(URLinput);

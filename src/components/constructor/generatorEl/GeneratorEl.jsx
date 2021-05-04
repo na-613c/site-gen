@@ -1,19 +1,12 @@
-import React, { useContext } from 'react';
-import { Row, Col, Collapse, Button } from 'antd';
-import { Context } from '../../../index'
-import { observer } from 'mobx-react-lite'
+import React from 'react';
+import { Row, Col, Collapse } from 'antd';
 import ElementForm from './ElementForm/ElementForm'
 import Animate from 'rc-animate';
 
 const { Panel } = Collapse;
 
-const GeneratorEl = () => {
 
-    const { store } = useContext(Context)
-
-    const { tmpPageService } = store;
-
-    let pageDom = tmpPageService.getPageDOM();
+const GeneratorEl = ({ tmpPageService }) => {
 
     const elements = tmpPageService.elements.map((el, id) => {
         return (
@@ -29,16 +22,14 @@ const GeneratorEl = () => {
         )
     })
 
-    const pageDomElements = pageDom.map((el) => {
+    const pageDomElements = tmpPageService.getPageDOM().map((el) => {
         return (
-
             <ElementForm
                 pageDom={el}
                 key={el.id}
                 removeElement={tmpPageService.removeElement}
                 renderPageDOM={tmpPageService.renderPageDOM}
             />
-
         )
     })
 
@@ -48,23 +39,11 @@ const GeneratorEl = () => {
                 <Collapse>
                     {elements}
                 </Collapse>
-                <Button
-                    style={{ marginTop: 20 }}
-                    type="primary"
-                    onClick={() => tmpPageService.saveBtn.onClick()}
-                    disabled={!tmpPageService.saveBtn.isValid}
-                >
-                    Создать
-                    </Button>
             </Col>
             <Col span={12}>
-                <Animate
-                    transitionName="fade"
-                    component="div"
-                >
+                <Animate transitionName="fade" component="div" >
                     {pageDomElements}
                 </Animate>
-
             </Col>
         </Row>
 
@@ -72,4 +51,4 @@ const GeneratorEl = () => {
     );
 }
 
-export default React.memo(observer(GeneratorEl));
+export default React.memo(GeneratorEl);

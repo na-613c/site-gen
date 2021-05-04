@@ -5,13 +5,16 @@ import ElementDOM from "../model/ElementDOM"
 
 
 class TmpPageService {
-    constructor() {
+    constructor(store) {
         makeAutoObservable(this)
+        this.store = store;
     };
 
     pageDOM = [];
     pageDOMtoString = [];
     url = ''
+    store;
+
 
     renderPageDOM = () => {
         this.pageDOMtoString = this.pageDOM.map((el) => {
@@ -48,9 +51,27 @@ class TmpPageService {
         this.saveBtn = { ...this.saveBtn, isValid: validation(this.url, this.getPageDOM()) }
     }
 
+    _clean = () => {
+        this.pageDOM = [];
+        this.pageDOMtoString = [];
+        this.url = ''
+    }
+
     saveBtn = {
         isValid: validation(this.url, this.getPageDOM()),
-        onClick: () => { console.log(this.url, ' URL:::::::') }
+        onClick: () => {
+            this.store.firebaseService.addWebsite({
+                pageDOM: this.pageDOM.map((el) => ({
+                    id: el.id,
+                    key: el.key,
+                    isHaveUrl: el.isHaveUrl,
+                    content: el.content,
+                    url: el.url,
+                })),
+                url: this.url
+            })
+            this._clean()
+        }
     }
 
     elements = [

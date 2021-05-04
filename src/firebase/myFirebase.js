@@ -27,3 +27,58 @@ export const myFirebase = {
     firestore
 }
 
+// export let fb = {
+
+//     readFromFirebase() {
+//         let arrayData = [];
+
+//         firebase.database().ref().orderByValue().on('value', snapshot => {
+//             const keyArr = Object.keys(snapshot.val());
+//             let obj = snapshot.val()
+//             let strJSON = JSON.stringify(obj)
+
+//             for (let i = 0; i < keyArr.length; i++) {
+//                 let keyData = "" + keyArr[i];
+
+//                 let oneAbonentInfo;
+
+//                 JSON.parse(strJSON, (key, value) => {
+
+//                     if (key === keyData) {
+//                         value.id = key
+//                         return oneAbonentInfo = value;
+//                     }
+//                     return value;
+//                 });
+//                 arrayData.unshift(oneAbonentInfo);
+//             }
+
+//             arrayData = [];
+//             return null;
+
+//         });
+//     },
+
+//     addInFirebase(data) {
+
+//         let info = {
+//             lastname: data.lastname,
+//             firstname: data.firstname,
+//             middlename: data.middlename,
+//             street: data.street,
+//             building: data.building,
+//             flat: data.flat,
+//             phone: data.phone,
+//             tarif: data.tarif,
+//             date: this.addDate()
+//         }
+
+//         firebase.database().ref().push().set(info);
+//     },
+
+
+//     delInFirebase(key) {
+//         firebase.database().ref().child(key).remove();
+//     },
+
+// }

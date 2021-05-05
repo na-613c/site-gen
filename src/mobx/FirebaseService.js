@@ -25,18 +25,7 @@ class FirebaseService {
                 });
             });
 
-            this.sites = sites.map((val) => {
-                return {
-                    uid: val.uid,
-                    url: val.url,
-                    email: val.email,
-                    displayName: val.displayName,
-                    pageDom: val.pageDOM.map((el) => {
-                        let props = { content: el.content, url: el.url }
-                        return generateElement[el.key](props)
-                    }).join('')
-                }
-            });
+            this.sites = sites
 
             this.allUrl = sites.map((val) => val.url);
 

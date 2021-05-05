@@ -6,35 +6,32 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Context } from "../../index";
 import firebase from "firebase";
 
+
 const Header = () => {
 
-    const { auth, store } = useContext(Context)
+    const { auth, store} = useContext(Context)
 
     const [user] = useAuthState(auth)
 
     user && store.firebaseService.setUser(user)
 
-    // console.log(user)
-    // console.log(user.displayName, 'displayName')
-    // console.log(user.email, 'email')
-
-
     const login = async () => {
         const provider = new firebase.auth.GoogleAuthProvider()
-        const { user } = await auth.signInWithPopup(provider)
+        const { user} = await auth.signInWithPopup(provider)
         store.firebaseService.setUser(user)
     }
 
     const signOut = () => {
-        store.firebaseService.setUser({
-            displayName: null,
-            email: null
-        })
+            store.firebaseService.setUser({
+                displayName: null,
+                email: null
+            })
         auth.signOut()
     }
     const text = 'Вы действительно хотите выйти?'
 
     return (
+
         <PageHeader
             title="Генератор сайтов"
             extra={[

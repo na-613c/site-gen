@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { Row, Col, Button, Space } from 'antd';
+import { Row, Col, Button, Space, notification  } from 'antd';
 import ResultPage from './ResultPage/ResultPage';
 import URLinput from './URLinput/URLinput'
 import GeneratorEl from './generatorEl/GeneratorEl';
-
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../index'
 
@@ -20,13 +19,26 @@ const ConstructorPage = () => {
 
     const isDuplicate = allUrl.includes(url)
 
+    const onClickSaveBtn = () => {
+        tmpPageService.saveBtn.onClick()
+        notification.open({
+            message: 'Сайт успешно создан',
+            description:
+                'Вы успешно создали сайт.',
+        });
+    };
+
+    window.onpopstate = function (event) {
+        alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    };
+
     return (
         <div>
             <Space align="start">
                 <URLinput url={url} setUrl={setUrl} allUrl={allUrl} />
                 <Button
                     type="primary"
-                    onClick={tmpPageService.saveBtn.onClick}
+                    onClick={onClickSaveBtn}
                     disabled={(!tmpPageService.saveBtn.isValid || isDuplicate)}
                 > Создать </Button>
             </Space>

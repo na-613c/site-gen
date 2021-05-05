@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
-import { Steps, Button, Row, Col, Space } from 'antd';
+import { Steps, Button, Row, Col } from 'antd';
 import LeftArrow from '../common/LeftArrow/LeftArrow'
 import { NavLink } from 'react-router-dom'
 import { CONSTRUCTOR_PAGE } from "../../utils/consts";
 import AllWebSites from "./allWebSites/AllWebSites";
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../index'
-import firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 

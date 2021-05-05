@@ -35,6 +35,9 @@ class TmpPageService {
 
     getPageDOM = () => this.pageDOM
 
+    _getPageDOMtoString = () => this.pageDOMtoString.map((el) => el.string).join('')
+
+
     removeElement = (id) => {
         const pageDOM = this.pageDOM;
         this.pageDOM = pageDOM.filter((el) => el.id !== id)
@@ -61,12 +64,7 @@ class TmpPageService {
         isValid: validation(this.url, this.getPageDOM()),
         onClick: () => {
             this.store.firebaseService.addWebsite({
-                pageDOM: this.pageDOM.map((el) => ({
-                    id: el.id,
-                    key: el.key,
-                    content: el.content,
-                    url: el.isHaveUrl ? el.url : '',
-                })),
+                pageDOM: this._getPageDOMtoString(),
                 url: this.url
             })
             this._clean()

@@ -1,27 +1,12 @@
-import React, { useContext } from 'react';
-import { Context } from '../../index'
+import React from 'react';
+import parse from 'html-react-parser';
 import { observer } from 'mobx-react-lite'
 
 
-const TmpPage = () => {
-
-    const { store } = useContext(Context)
-
-    const { tmpPageService } = store;
-
-    const text = tmpPageService.getPageDOMtoString;
-
-    console.log(text)
-
-    let a = <div dangerouslySetInnerHTML={{
-        __html:
-            text
-    }}>
-    </div >
-
+const TmpPage = ({ text }) => {
     return (
         <div>
-            {a}
+            {parse(text || '')}
         </div>
     );
 }

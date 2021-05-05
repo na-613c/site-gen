@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button, Popconfirm } from 'antd';
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -11,6 +12,7 @@ const AllWebSites = ({ user, firebaseService }) => {
             title: 'Вебсайт',
             dataIndex: 'site',
             key: 'site',
+            render: (url) => <NavLink to={`${url}`} key={url}>{url}</NavLink>,
         }, {
             title: 'Имя создателя',
             dataIndex: 'displayName',
@@ -18,6 +20,7 @@ const AllWebSites = ({ user, firebaseService }) => {
         },]
 
     const text = 'Вы действительно хотите удалить сайт?'
+
 
     user && columns.push({
         title: 'Дейтсвие',

@@ -12,23 +12,21 @@ class ElementForm extends React.PureComponent {
         this.state = { content: props.pageDom.content, url: props.pageDom.url };
     }
 
-
-
     onClose = () => {
         this.removeElement(this.pageDom.id)
         this.renderPageDOM()
     }
 
     onChangeContent = ({ target: { value } }) => {
-        this.pageDom.onChangeContent(value)
+        this.pageDom.onChangeContent(value.trim())
         this.renderPageDOM()
-        this.setState({ ...this.state, content: value })
+        this.setState({ ...this.state, content: value.trim() })
     }
 
     onChangeURL = ({ target: { value } }) => {
-        this.pageDom.onChangeURL(value)
+        this.pageDom.onChangeURL(value.trim())
         this.renderPageDOM()
-        this.setState({ ...this.state, url: value })
+        this.setState({ ...this.state, url: value.trim() })
     }
 
     getStatus = (data) => {

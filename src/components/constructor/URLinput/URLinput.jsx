@@ -11,7 +11,7 @@ const URLinput = ({ url, setUrl, allUrl }) => {
     }, [url, form]);
 
     const onChangeUrl = ({ target: { value } }) => {
-        setUrl(value)
+        setUrl(value.trim())
     }
 
     const getStatusUrl = (url) => {

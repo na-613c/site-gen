@@ -12,8 +12,7 @@ export const publicRoutes = [
     {
         path: MAIN_PAGE,
         Component: Main
-    }, 
-]
+    },]
 
 export const privateRoutes = [
     {
@@ -23,5 +22,4 @@ export const privateRoutes = [
     {
         path: MAIN_PAGE,
         Component: Main
-    }, 
-]
+    },]

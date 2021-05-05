@@ -8,6 +8,8 @@ class FirebaseService {
 
     sites = [];
     isLoading = true;
+    email
+    displayName
 
     constructor() {
 
@@ -17,20 +19,23 @@ class FirebaseService {
 
             snapshot.forEach((child) => {
                 sites.push({
+                    uid: child.key,
                     ...child.val()
                 });
             });
 
             this.sites = sites.map((val) => {
                 return {
+                    uid: val.uid,
                     url: val.url,
+                    email: val.email,
+                    displayName: val.displayName,
                     pageDom: val.pageDOM.map((el) => {
                         let props = { content: el.content, url: el.url }
                         return generateElement[el.key](props)
                     }).join('')
                 }
             });
-
 
             this.isLoading = false;
         }, (error) => {
@@ -39,16 +44,21 @@ class FirebaseService {
     }
 
     addWebsite = (site) => {
-        fb.database().ref().push(site);
-    } 
+        fb.database().ref().push({
+            ...site,
+            email: this.email,
+            displayName: this.displayName
+        });
+    }
 
-    // removeWebsite = (product) => {
-    //     fb.database().ref().orderByValue().child(product.id).set({});
-    // }
+    removeWebsite = (uid) => {
+        fb.database().ref().child(uid).remove();
+    }
 
-    // get totalsites() {
-    //     return this.sites.length;
-    // }
+    setUser = (user) => {
+        this.email = user.email;
+        this.displayName = user.displayName;
+    }
 }
 
 export default FirebaseService;

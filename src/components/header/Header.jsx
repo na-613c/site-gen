@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PageHeader, Button } from 'antd';
+import { PageHeader, Button, Space, Avatar, Popconfirm } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { CONSTRUCTOR_PAGE, MAIN_PAGE } from "../../utils/consts";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -8,16 +8,31 @@ import firebase from "firebase";
 
 const Header = () => {
 
-    const { auth } = useContext(Context)
+    const { auth, store } = useContext(Context)
 
     const [user] = useAuthState(auth)
+
+    user && store.firebaseService.setUser(user)
+
+    // console.log(user)
+    // console.log(user.displayName, 'displayName')
+    // console.log(user.email, 'email')
+
 
     const login = async () => {
         const provider = new firebase.auth.GoogleAuthProvider()
         const { user } = await auth.signInWithPopup(provider)
-        console.log(user)
+        store.firebaseService.setUser(user)
     }
 
+    const signOut = () => {
+        store.firebaseService.setUser({
+            displayName: null,
+            email: null
+        })
+        auth.signOut()
+    }
+    const text = 'Вы действительно хотите выйти?'
 
     return (
         <PageHeader
@@ -26,7 +41,13 @@ const Header = () => {
                 <NavLink to={MAIN_PAGE} key='1'>Главная</NavLink>,
                 user && <NavLink to={CONSTRUCTOR_PAGE} key='2'>Конструктор</NavLink>,
                 user ?
-                    <Button onClick={() => auth.signOut()} key='3' variant={"outlined"}>Выйти</Button>
+                    (<Space align="center" key='3'>
+                        <Avatar src={user.photoURL} alt={user.displayName} />
+                        <span>{user.displayName}</span>
+                        <Popconfirm placement="topLeft" title={text} onConfirm={signOut} okText="Да" cancelText="Нет">
+                            <Button variant={"outlined"}>Выйти</Button>
+                        </Popconfirm>
+                    </Space>)
                     :
                     <Button onClick={login} type="primary" key='4'>Войти</Button>,
             ]} />

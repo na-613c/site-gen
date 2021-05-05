@@ -9,7 +9,7 @@ const validation = (url, arr) => {
         let isEmptyContent = content.includes('') || content.includes(undefined)
         let isEmptyURL = url.includes('') || url.includes(undefined)
 
-        return !(isEmptyContent || isEmptyURL)
+        return !(isEmptyContent || isEmptyURL || arr.length === 0)
     } else {
         return false
     }

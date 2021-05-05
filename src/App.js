@@ -10,7 +10,6 @@ import Header from './components/header/Header';
 import MyFooter from './components/footer/MyFooter';
 import { Layout } from 'antd';
 import TmpPage from "./components/tmpPage/TmpPage";
-import { TMP_PAGE } from './utils/consts'
 import { Route, Switch } from "react-router";
 
 const { Content } = Layout;
@@ -31,7 +30,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route key={TMP_PAGE} path={TMP_PAGE} component={TmpPage} exact={true} />
+        <Route key={'TMP_PAGE'} path={'TMP_PAGE'} component={TmpPage} exact={true} />
         <Route>
           <Header />
           <Content style={{ padding: '50px', background: '#f0f2f5' }}>

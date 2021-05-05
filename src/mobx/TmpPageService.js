@@ -64,9 +64,8 @@ class TmpPageService {
                 pageDOM: this.pageDOM.map((el) => ({
                     id: el.id,
                     key: el.key,
-                    isHaveUrl: el.isHaveUrl,
                     content: el.content,
-                    url: el.url,
+                    url: el.isHaveUrl ? el.url : '',
                 })),
                 url: this.url
             })

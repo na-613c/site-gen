@@ -14,7 +14,7 @@ class TmpPageService {
     pageDOMtoString = [];
     url = ''
     store;
-
+    urls
 
     renderPageDOM = () => {
         this.pageDOMtoString = this.pageDOM.map((el) => {

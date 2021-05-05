@@ -62,6 +62,10 @@ class FirebaseService {
         this.email = user.email;
         this.displayName = user.displayName;
     }
+
+    getURLs = () => {
+        return this.allUrl
+    }
 }
 
 export default FirebaseService;

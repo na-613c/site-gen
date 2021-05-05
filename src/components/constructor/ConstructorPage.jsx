@@ -18,14 +18,16 @@ const ConstructorPage = () => {
     const url = store.tmpPageService.url;
     const setUrl = store.tmpPageService.setUrl;
 
+    const isDuplicate = allUrl.includes(url)
+
     return (
         <div>
             <Space align="start">
-                <URLinput url={url} setUrl={setUrl} allUrl={allUrl}/>
+                <URLinput url={url} setUrl={setUrl} allUrl={allUrl} />
                 <Button
                     type="primary"
                     onClick={tmpPageService.saveBtn.onClick}
-                    disabled={!tmpPageService.saveBtn.isValid}
+                    disabled={(!tmpPageService.saveBtn.isValid || isDuplicate)}
                 > Создать </Button>
             </Space>
 

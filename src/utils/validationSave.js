@@ -1,8 +1,6 @@
 const validation = (url, arr) => {
 
-    if (url === '123') {
-        return false;
-    } else if (url) {
+    if (url) {
         let content = arr.map((el) => el.content)
         let url = arr.filter((el) => el.isHaveUrl).map((el) => el.url)
 

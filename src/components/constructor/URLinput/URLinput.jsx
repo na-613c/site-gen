@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Input, Form } from 'antd';
 
 
-const URLinput = ({ url, setUrl }) => {
+const URLinput = ({ url, setUrl, allUrl }) => {
 
     const [form] = Form.useForm();
 
@@ -19,12 +19,16 @@ const URLinput = ({ url, setUrl }) => {
             case '': return {
                 status: 'error', help: 'Заполните поле.'
             }
-            case '123': return {
-                status: 'error', help: 'Данный URL-путь уже занят.'
-            }
-            default: return {
-                status: 'success', help: false
-            }
+            default:
+                if (allUrl.includes(url)) {
+                    return {
+                        status: 'error', help: 'Данный URL-путь уже занят.'
+                    }
+                } else {
+                    return {
+                        status: 'success', help: false
+                    }
+                }
         }
     }
 

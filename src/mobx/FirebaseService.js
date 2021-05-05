@@ -10,6 +10,7 @@ class FirebaseService {
     isLoading = true;
     email
     displayName
+    allUrl = []
 
     constructor() {
 
@@ -36,6 +37,8 @@ class FirebaseService {
                     }).join('')
                 }
             });
+
+            this.allUrl = sites.map((val) => val.url);
 
             this.isLoading = false;
         }, (error) => {

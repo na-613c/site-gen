@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite'
 
 const TmpPage = ({ text }) => {
     return (
-        <div>
+        <div style={{ width: '90%', margin: '20px auto' }}>
             {parse(text || '')}
         </div>
     );

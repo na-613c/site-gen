@@ -14,9 +14,9 @@ const Loader = () => {
             }}>
                 <div className="lds-hourglass" />
             </div>
-
         </div>
     );
 }
+
 
 export default Loader;

@@ -13,7 +13,7 @@ const GeneratorEl = ({ tmpPageService }) => {
             <Panel header={el.title} key={id}>
                 {el.content.map((cont, id) => {
                     return (
-                        <p key={id} onClick={() => cont.content(cont.title)}>
+                        <p key={id} onClick={() => cont.content(cont.title)} style={{cursor:'pointer'}}>
                             {cont.title}
                         </p>
                     )
@@ -41,9 +41,11 @@ const GeneratorEl = ({ tmpPageService }) => {
                 </Collapse>
             </Col>
             <Col span={12}>
-                <Animate transitionName="fade" component="div" >
-                    {pageDomElements}
-                </Animate>
+                <div style={{ height: 420, overflow: 'auto' }}>
+                    <Animate transitionName="fade" component="div" >
+                        {pageDomElements}
+                    </Animate>
+                </div>
             </Col>
         </Row>
 

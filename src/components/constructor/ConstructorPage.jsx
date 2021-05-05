@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Row, Col, Button, Space, notification  } from 'antd';
+import { Row, Col, Button, Space, notification } from 'antd';
 import ResultPage from './ResultPage/ResultPage';
 import URLinput from './URLinput/URLinput'
 import GeneratorEl from './generatorEl/GeneratorEl';
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../index'
+import { NavLink } from 'react-router-dom'
 
 
 const ConstructorPage = () => {
@@ -23,8 +24,11 @@ const ConstructorPage = () => {
         tmpPageService.saveBtn.onClick()
         notification.open({
             message: 'Сайт успешно создан',
-            description:
-                'Вы успешно создали сайт.',
+            description: () => (<>
+                <p>Вы успешно создали сайт. </p>
+                <NavLink to={`/${url}`} key='1'>Вы можете посетить сайт нажав на эту надпись.</NavLink>
+            </>)
+            ,
         });
     };
 

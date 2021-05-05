@@ -9,7 +9,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Header from './components/header/Header';
 import MyFooter from './components/footer/MyFooter';
 import { Layout } from 'antd';
-// import TmpPage from "./components/tmpPage/TmpPage";
 import { Route, Switch } from "react-router";
 import { observer } from 'mobx-react-lite'
 
@@ -24,8 +23,9 @@ const App = () => {
   const [user, loading, error] = useAuthState(auth)
 
   const sites = store.firebaseService.sites;
+  const loadingStore = store.firebaseService.isLoading;
 
-  if (loading) {
+  if (loading || loadingStore) {
     return <Loader />
   }
 

@@ -80,10 +80,10 @@ class TmpPageService {
                     content: (title) => this._addObj('BTN_LEFT', title, true)
                 }, {
                     title: 'Центральная кнопка',
-                    content: (title) => this._addObj('BTN_RIGHT', title, true)
+                    content: (title) => this._addObj('BTN_CENTER', title, true)
                 }, {
                     title: 'Правая кнопка',
-                    content: (title) => this._addObj('BTN_CENTER', title, true)
+                    content: (title) => this._addObj('BTN_RIGHT', title, true)
                 }
             ]
         }, {
@@ -93,10 +93,10 @@ class TmpPageService {
                     title: 'Левая картинка',
                     content: (title) => this._addObj('IMG_LEFT', title, true)
                 }, {
-                    title: 'Центральная картинка',
+                    title: 'Правая картинка',
                     content: (title) => this._addObj('IMG_RIGHT', title, true)
                 }, {
-                    title: 'Правая картинка',
+                    title: 'Центральная картинка',
                     content: (title) => this._addObj('IMG_CENTER', title, true)
                 }, {
                     title: 'На всю ширину картинка',
@@ -110,10 +110,10 @@ class TmpPageService {
                     title: 'Левый текст',
                     content: (title) => this._addObj('H2_LEFT', title)
                 }, {
-                    title: 'Центральный текст',
+                    title: 'Правый текст',
                     content: (title) => this._addObj('H2_RIGHT', title)
                 }, {
-                    title: 'Правый текст',
+                    title: 'Центральный текст',
                     content: (title) => this._addObj('H2_CENTER', title)
                 }, {
                     title: 'На всю ширину текст',
@@ -127,10 +127,10 @@ class TmpPageService {
                     title: 'Левый текст',
                     content: (title) => this._addObj('H3_LEFT', title)
                 }, {
-                    title: 'Центральный текст',
+                    title: 'Правый текст',
                     content: (title) => this._addObj('H3_RIGHT', title)
                 }, {
-                    title: 'Правый текст',
+                    title: 'Центральный текст',
                     content: (title) => this._addObj('H3_CENTER', title)
                 }, {
                     title: 'На всю ширину текст',
@@ -144,10 +144,10 @@ class TmpPageService {
                     title: 'Левый текст',
                     content: (title) => this._addObj('P_LEFT', title)
                 }, {
-                    title: 'Центральный текст',
+                    title: 'Правый текст',
                     content: (title) => this._addObj('P_RIGHT', title)
                 }, {
-                    title: 'Правый текст',
+                    title: 'Центральный текст',
                     content: (title) => this._addObj('P_CENTER', title)
                 }, {
                     title: 'На всю ширину текст',

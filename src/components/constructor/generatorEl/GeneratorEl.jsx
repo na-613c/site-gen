@@ -13,7 +13,7 @@ const GeneratorEl = ({ tmpPageService }) => {
             <Panel header={el.title} key={id}>
                 {el.content.map((cont, id) => {
                     return (
-                        <p key={id} onClick={() => cont.content(cont.title)} style={{cursor:'pointer'}}>
+                        <p key={id} onClick={() => cont.content(cont.title)} style={{ cursor: 'pointer' }}>
                             {cont.title}
                         </p>
                     )
@@ -31,7 +31,7 @@ const GeneratorEl = ({ tmpPageService }) => {
                 renderPageDOM={tmpPageService.renderPageDOM}
             />
         )
-    })
+    }).reverse();
 
     return (
         <Row>

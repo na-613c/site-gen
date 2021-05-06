@@ -20,15 +20,16 @@ const ConstructorPage = () => {
 
     const isDuplicate = allUrl.includes(url)
 
+    const btn = (
+        <a href={`https://na-613c.github.io/site-gen#/${url}`} target='_blank' > Вы можете посетить сайт нажав на эту надпись.</a>
+    );
+
     const onClickSaveBtn = () => {
         tmpPageService.saveBtn.onClick()
         notification.open({
             message: 'Сайт успешно создан',
-            description: () => (<>
-                <p>Вы успешно создали сайт. </p>
-                <NavLink to={`/${url}`} key='1'>Вы можете посетить сайт нажав на эту надпись.</NavLink>
-            </>)
-            ,
+            description: 'Вы успешно создали сайт.',
+            btn,
         });
     };
 

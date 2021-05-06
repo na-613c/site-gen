@@ -78,3 +78,21 @@
   border-color: #777;
   background-color: #aaa;
 }
+
+
+.html-center {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.html-left {
+  width: 100%;
+  margin-right: auto;
+}
+
+.html-right {
+  width: 100%;
+  margin-left: auto;
+  text-align: right;
+}

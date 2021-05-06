@@ -2,7 +2,7 @@ import React, { useContext, Suspense } from 'react';
 import { Context } from "./index";
 import './App.css';
 import 'antd/dist/antd.css';
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import Loader from "./components/common/Loader";
 import AppRouter from "./components/AppRouter";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -29,19 +29,27 @@ const App = () => {
     return <Loader />
   }
 
+  const renderComponnt = (pageDOM) => {
+    return (
+      <Suspense fallback={<Loader />}>
+        <TmpPage text={pageDOM} />
+      </Suspense>
+    )
+  }
+
   const otherComponent = sites.map((site) => {
-    return (<Route key={site.uid} path={`/${site.url}`} render={() => {
-      return (
-        <Suspense fallback={<Loader />}>
-          <TmpPage text={site.pageDOM} />
-        </Suspense>
-      )
-    }} exact={true}
-    />)
+    return (
+      <Route
+        exact={true}
+        key={site.uid}
+        path={`/${site.url}`}
+        render={() => renderComponnt(site.pageDOM)}
+      />
+    )
   })
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         {otherComponent}
         <Route>
@@ -54,7 +62,7 @@ const App = () => {
           <MyFooter />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -1,6 +1,5 @@
 import { makeAutoObservable } from 'mobx';
 import { myFirebase } from '../firebase/myFirebase'
-import generateElement from "../utils/constructElements"
 
 const fb = myFirebase.firebase;
 
@@ -25,7 +24,7 @@ class FirebaseService {
                 });
             });
 
-            this.sites = sites
+            this.sites = sites.reverse();
 
             this.allUrl = sites.map((val) => val.url);
 

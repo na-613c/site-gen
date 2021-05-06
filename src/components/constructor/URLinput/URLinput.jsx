@@ -49,9 +49,9 @@ const URLinput = ({ url, setUrl, allUrl }) => {
                 help={field.help}
             >
                 <Input
-                    addonBefore={"http://localhost:3000/"}
+                    addonBefore={"https://na-613c.github.io/site-gen"}
                     maxLength={15}
-                    style={{ width: 300 }}
+                    style={{ width: 400 }}
                     size='middle'
                 />
             </Form.Item>

@@ -52,7 +52,13 @@ const AllWebSites = ({ user, firebaseService }) => {
 
 
     return (
-        <Table columns={columns} dataSource={data} loading={isLoading} />
+        <Table
+            columns={columns}
+            dataSource={data}
+            loading={isLoading}
+            size="small"
+            pagination={{ pageSize: 5 }}
+        />
     )
 }
 

@@ -54,7 +54,7 @@ class TmpPageService {
         this.saveBtn = { ...this.saveBtn, isValid: validation(this.url, this.getPageDOM()) }
     }
 
-    _clean = () => {
+    clean = () => {
         this.pageDOM = [];
         this.pageDOMtoString = [];
         this.url = ''
@@ -67,7 +67,7 @@ class TmpPageService {
                 pageDOM: this._getPageDOMtoString(),
                 url: this.url
             })
-            this._clean()
+            this.clean()
         }
     }
 

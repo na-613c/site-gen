@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Popconfirm } from 'antd';
+import { Table, Button, Popconfirm, Card } from 'antd';
 import { NavLink } from 'react-router-dom'
 
 
@@ -12,7 +12,7 @@ const AllWebSites = ({ user, firebaseService }) => {
             title: 'Вебсайт',
             dataIndex: 'site',
             key: 'site',
-            render: (url) => <NavLink to={`${url}`} key={url}>{url}</NavLink>,
+            render: (url) => <NavLink to={`${url}`} key={url}>{`https://na-613c.github.io/site-gen#/${url}`}</NavLink>,
         }, {
             title: 'Имя создателя',
             dataIndex: 'displayName',
@@ -52,13 +52,16 @@ const AllWebSites = ({ user, firebaseService }) => {
 
 
     return (
-        <Table
-            columns={columns}
-            dataSource={data}
-            loading={isLoading}
-            size="small"
-            pagination={{ pageSize: 5 }}
-        />
+        <Card style={{ boxShadow: ' 0 10px 40px #c7d7b5' }}>
+            <Table
+                columns={columns}
+                dataSource={data}
+                loading={isLoading}
+                size="small"
+                pagination={{ pageSize: 5 }}
+                style={{ transitionDuration: '.5s' }}
+            />
+        </Card>
     )
 }
 

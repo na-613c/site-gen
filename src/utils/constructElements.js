@@ -3,10 +3,10 @@ const generateElement = {
     BTN_RIGHT: ({ content = '', url }) => `<div class="html-right"><a href="${url}" align="right"><button type="button" class="ant-btn ant-btn-primary">${content}</button></a></div>`,
     BTN_CENTER: ({ content = '', url }) => `<div class="html-center"><a href="${url}" align="center"><button type="button" class="ant-btn ant-btn-primary">${content}</button></a></div>`,
 
-    IMG_LEFT: ({ content = '', url }) => `<div class="html-left"><img src="${url}" align="left" alt="${content}"></img></div>`,
-    IMG_RIGHT: ({ content = '', url }) => `<div class="html-right"><img src="${url}" align="right" alt="${content}"></img></div>`,
-    IMG_CENTER: ({ content = '', url }) => `<div class="html-center"><img src="${url}"  align="center" alt="${content}" width='50%'></img></div>`,
-    IMG_JUSTIFY: ({ content = '', url }) => `<div class="html-center"><img src="${url}" align="justify" width='100%' alt="${content}"></img></div>`,
+    IMG_LEFT: ({ content = '', url }) => `<div class="html-left"><img src="${url}" alt="${content}"></img></div>`,
+    IMG_RIGHT: ({ content = '', url }) => `<div class="html-right"><img src="${url}" alt="${content}"></img></div>`,
+    IMG_CENTER: ({ content = '', url }) => `<div class="html-center"><img src="${url}" alt="${content}" width='50%'></img></div>`,
+    IMG_JUSTIFY: ({ content = '', url }) => `<div class="html-center"><img src="${url}" width='100%' alt="${content}"></img></div>`,
 
     H2_LEFT: ({ content = '' }) => `<h2 align="left">${content}</h2>`,
     H2_RIGHT: ({ content = '' }) => `<h2 align="right">${content}</h2>`,

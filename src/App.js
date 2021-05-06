@@ -48,14 +48,16 @@ const App = () => {
     )
   })
 
+  const isMobile = window.innerWidth < 640
+
   return (
     <HashRouter>
       <Switch>
         {otherComponent}
         <Route>
           <Header />
-          <Content style={{ padding: '50px', background: '#f0f2f5' }}>
-            <Content style={{ background: '#fff', padding: 50 }}>
+          <Content style={{ padding: isMobile ? 10 : 50, background: '#f0f2f5' }}>
+            <Content style={{ background: '#fff', padding: isMobile ? 10 : 50}}>
               <AppRouter />
             </Content>
           </Content>

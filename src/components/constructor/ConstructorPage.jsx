@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Row, Col, Button, Space, notification } from 'antd';
 import ResultPage from './ResultPage/ResultPage';
 import URLinput from './URLinput/URLinput'
 import GeneratorEl from './generatorEl/GeneratorEl';
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../index'
-import { NavLink } from 'react-router-dom'
+import { Prompt } from "react-router-dom";
 
 
 const ConstructorPage = () => {
@@ -18,13 +18,19 @@ const ConstructorPage = () => {
     const url = store.tmpPageService.url;
     const setUrl = store.tmpPageService.setUrl;
 
-    const isDuplicate = allUrl.includes(url)
+    const clean = store.tmpPageService.clean;
+
+    const isDuplicate = allUrl.includes(url);
+
+    let isEmptyData = true;
+    isEmptyData = !!pageDOMtoString.length || !!url.length;
 
     const btn = (
         <a href={`https://na-613c.github.io/site-gen#/${url}`} target='_blank' > Вы можете посетить сайт нажав на эту надпись.</a>
     );
 
     const onClickSaveBtn = () => {
+        isEmptyData = true;
         tmpPageService.saveBtn.onClick()
         notification.open({
             message: 'Сайт успешно создан',
@@ -33,12 +39,24 @@ const ConstructorPage = () => {
         });
     };
 
-    window.onpopstate = function (event) {
-        alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
-    };
+    useEffect(() => {
+        return () => clean()
+    }, [])
+
+    const message = (location, action) => {
+        if (action === 'POP') {
+            console.log("Backing up...")
+        }
+
+        return location.pathname.startsWith("/constructor")
+            ? true
+            : isEmptyData ? `Все данные будут утеряны, Вы действительно хотите покинуть страницу?` : true
+    }
+
 
     return (
         <div>
+            <Prompt message={message} />
             <Space align="start">
                 <URLinput url={url} setUrl={setUrl} allUrl={allUrl} />
                 <Button

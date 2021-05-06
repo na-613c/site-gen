@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 
 
-const AllWebSites = ({ user, firebaseService }) => {
+const AllWebSites = ({ firebaseService }) => {
     const { isLoading, sites, removeWebsite, email } = firebaseService
 
     const columns = [
@@ -12,34 +12,35 @@ const AllWebSites = ({ user, firebaseService }) => {
             title: 'Вебсайт',
             dataIndex: 'site',
             key: 'site',
+            width: 340,
             render: (url) => <NavLink to={`${url}`} key={url}>{`https://na-613c.github.io/site-gen#/${url}`}</NavLink>,
         }, {
             title: 'Имя создателя',
             dataIndex: 'displayName',
             key: 'displayName',
-        },]
+            width: 160,
+        }, {
+            title: 'Дейтсвие',
+            dataIndex: '',
+            key: 'x',
+            fixed: 'right',
+            align: 'center',
+            width: 100,
+            render: (data) => (
+                <Popconfirm
+                    placement="topLeft"
+                    title={text}
+                    onConfirm={() => removeWebsite(data.key)}
+                    disabled={email !== data.email}
+                    okText="Да" cancelText="Нет"
+                >
+                    <Button type="primary" danger disabled={email !== data.email}>
+                        Удалить
+                </Button>
+                </Popconfirm>),
+        }]
 
     const text = 'Вы действительно хотите удалить сайт?'
-
-
-    user && columns.push({
-        title: 'Дейтсвие',
-        dataIndex: '',
-        key: 'x',
-        render: (data) => (
-            <Popconfirm
-                placement="topLeft"
-                title={text}
-                onConfirm={() => removeWebsite(data.key)}
-                disabled={email !== data.email}
-                okText="Да" cancelText="Нет"
-            >
-                <Button type="primary" danger disabled={email !== data.email}>
-                    Удалить
-                </Button>
-            </Popconfirm>),
-    })
-
 
     const data = sites.map((el) => {
         return {
@@ -52,7 +53,7 @@ const AllWebSites = ({ user, firebaseService }) => {
 
 
     return (
-        <Card style={{ boxShadow: ' 0 10px 40px #c7d7b5' }}>
+        <Card style={{ boxShadow: ' 0 10px 40px #c7d7b5', width: '100%' }}>
             <Table
                 columns={columns}
                 dataSource={data}
@@ -60,6 +61,7 @@ const AllWebSites = ({ user, firebaseService }) => {
                 size="small"
                 pagination={{ pageSize: 5 }}
                 style={{ transitionDuration: '.5s' }}
+                scroll={{ x: 500 }}
             />
         </Card>
     )

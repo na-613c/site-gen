@@ -31,6 +31,8 @@ const URLinput = ({ url, setUrl, allUrl }) => {
                 }
         }
     }
+    
+    if (window.innerWidth < 590) alert('Для корректной работы, откройте с устройва с шириной экрана более 590 пикселей!')
 
     let field = getStatusUrl(url);
 
@@ -49,9 +51,9 @@ const URLinput = ({ url, setUrl, allUrl }) => {
                 help={field.help}
             >
                 <Input
-                    addonBefore={"https://na-613c.github.io/site-gen"}
+                    addonBefore={window.innerWidth > 800 ? "https://na-613c.github.io/site-gen" : "site-gen"}
                     maxLength={15}
-                    style={{ width: 400 }}
+                    style={{ width: window.innerWidth > 800 ? 400 : 240 }}
                     size='middle'
                 />
             </Form.Item>

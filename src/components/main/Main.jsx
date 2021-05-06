@@ -6,7 +6,6 @@ import { CONSTRUCTOR_PAGE } from "../../utils/consts";
 import AllWebSites from "./allWebSites/AllWebSites";
 import { observer } from 'mobx-react-lite'
 import { Context } from '../../index'
-import { useAuthState } from "react-firebase-hooks/auth";
 
 
 const { Step } = Steps;
@@ -15,7 +14,6 @@ const { Step } = Steps;
 const Main = () => {
 
     const { store, auth } = useContext(Context);
-    const [user] = useAuthState(auth);
     const firebaseService = store.firebaseService;
     return (
         <>
@@ -23,7 +21,7 @@ const Main = () => {
                 <h1>Здесь Вы можете собрать простенький сайт</h1>
             </Row>
             <Row justify="space-between" align="middle">
-                <Col span={12}>
+                <Col md={{ span: 10 }} xs={{ span: 24 }}>
                     <Row>
                         <Space direction="vertical">
                             <Steps progressDot current={3} direction="vertical">
@@ -31,20 +29,20 @@ const Main = () => {
                                 <Step title="Уникальный URL" description="Далее надо указать URL по которому будет доступен ваш сайт." />
                                 <Step title="Сборка" description="И последним этапом является то, что надо собрать сайт и сохранить." />
                             </Steps>
-                            <div>
-                                <NavLink to={CONSTRUCTOR_PAGE} >
-                                    <Button type="primary" style={{ marginRight: 20 }}> Начать создание </Button>
-                                </NavLink>
-                                <LeftArrow />
+                            <Space direction="vertical">
+                                <div style={{ display: 'inline' }}>
+                                    <NavLink to={CONSTRUCTOR_PAGE} >
+                                        <Button type="primary" style={{ marginRight: 20 }}> Начать создание </Button>
+                                    </NavLink>
+                                    <LeftArrow />
+                                </div>
                                 <span style={{ display: 'inline-block' }}>  Нажми на кнопку сбоку, что бы начать создание сайта.</span>
-                            </div>
+                            </Space>
                         </Space>
                     </Row>
                 </Col>
-                <Col span={12}>
-                    <Row>
-                        <AllWebSites user={{ ...user }} firebaseService={{ ...firebaseService }} />
-                    </Row>
+                <Col md={{ span: 13 }} xs={{ span: 24 }}>
+                    <AllWebSites firebaseService={{ ...firebaseService }} />
                 </Col>
             </Row>
         </>

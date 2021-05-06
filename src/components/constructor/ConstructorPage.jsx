@@ -57,6 +57,7 @@ const ConstructorPage = () => {
     return (
         <div>
             <Prompt message={message} />
+
             <Space align="start">
                 <URLinput url={url} setUrl={setUrl} allUrl={allUrl} />
                 <Button
@@ -67,10 +68,10 @@ const ConstructorPage = () => {
             </Space>
 
             <Row>
-                <Col span={12}>
+                <Col xl={{ span: 12 }} lg={{ span: 16 }} md={{ span: 20 }} xs={{ span: 24 }}>
                     <GeneratorEl tmpPageService={{ ...tmpPageService }} />
                 </Col>
-                <Col span={12}>
+                <Col xl={{ span: 12 }} lg={{ span: 24 }} md={{ span: 24 }} xs={{ span: 24 }}>
                     <ResultPage pageDOMtoString={pageDOMtoString} />
                 </Col>
             </Row>

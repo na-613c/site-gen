@@ -2,8 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition-duration: 0.3s;
-  transition: 1s;
 }
 
 #root {

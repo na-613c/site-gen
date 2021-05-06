@@ -57,7 +57,7 @@ const App = () => {
         <Route>
           <Header />
           <Content style={{ padding: isMobile ? 10 : 50, background: '#f0f2f5' }}>
-            <Content style={{ background: '#fff', padding: isMobile ? 10 : 50}}>
+            <Content style={{ background: '#fff', padding: isMobile ? 10 : 50 }}>
               <AppRouter />
             </Content>
           </Content>

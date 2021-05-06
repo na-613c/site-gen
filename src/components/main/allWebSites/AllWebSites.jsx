@@ -59,7 +59,11 @@ const AllWebSites = ({ firebaseService }) => {
                 dataSource={data}
                 loading={isLoading}
                 size="small"
-                pagination={{ pageSize: 5 }}
+                pagination={{
+                    pageSize: 5,
+                    showSizeChanger: false,
+                    size: 'default',
+                }}
                 style={{ transitionDuration: '.5s' }}
                 scroll={{ x: 500 }}
             />

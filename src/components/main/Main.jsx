@@ -13,14 +13,15 @@ const { Step } = Steps;
 
 const Main = () => {
 
-    const { store, auth } = useContext(Context);
+    const { store } = useContext(Context);
     const firebaseService = store.firebaseService;
+    
     return (
         <>
             <Row>
                 <h1>Здесь Вы можете собрать простенький сайт</h1>
             </Row>
-            <Row justify="space-between" align="middle">
+            <Row justify="space-between" align="start">
                 <Col md={{ span: 10 }} xs={{ span: 24 }}>
                     <Row>
                         <Space direction="vertical">

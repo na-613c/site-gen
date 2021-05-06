@@ -60,8 +60,8 @@ const AllWebSites = ({ firebaseService }) => {
                 loading={isLoading}
                 size="small"
                 pagination={{
-                    pageSize: 5,
-                    showSizeChanger: false,
+                    defaultPageSize: 5,
+                    pageSizeOptions: [5, 10, 20, 50, 100],
                     size: 'default',
                 }}
                 style={{ transitionDuration: '.5s' }}

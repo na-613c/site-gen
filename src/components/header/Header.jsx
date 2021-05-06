@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PageHeader, Button, Space, Avatar, Popconfirm, Card } from 'antd';
+import { PageHeader, Button, Space, Avatar, Popconfirm } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { CONSTRUCTOR_PAGE, MAIN_PAGE } from "../../utils/consts";
 import { useAuthState } from "react-firebase-hooks/auth";

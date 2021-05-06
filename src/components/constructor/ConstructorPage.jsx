@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Row, Col, Button, Space, notification } from 'antd';
 import ResultPage from './ResultPage/ResultPage';
 import URLinput from './URLinput/URLinput'
@@ -11,14 +11,10 @@ import { Prompt } from "react-router-dom";
 const ConstructorPage = () => {
 
     const { store } = useContext(Context)
-    const tmpPageService = store.tmpPageService;
     const allUrl = store.firebaseService.allUrl;
-    const pageDOMtoString = store.tmpPageService.pageDOMtoString;
+    const tmpPageService = store.tmpPageService;
 
-    const url = store.tmpPageService.url;
-    const setUrl = store.tmpPageService.setUrl;
-
-    const clean = store.tmpPageService.clean;
+    const { url, clean, setUrl, pageDOMtoString, saveBtn } = tmpPageService;
 
     const isDuplicate = allUrl.includes(url);
 
@@ -31,7 +27,7 @@ const ConstructorPage = () => {
 
     const onClickSaveBtn = () => {
         isEmptyData = true;
-        tmpPageService.saveBtn.onClick()
+        saveBtn.onClick()
         notification.open({
             message: 'Сайт успешно создан',
             description: 'Вы успешно создали сайт.',
@@ -63,7 +59,7 @@ const ConstructorPage = () => {
                 <Button
                     type="primary"
                     onClick={onClickSaveBtn}
-                    disabled={(!tmpPageService.saveBtn.isValid || isDuplicate)}
+                    disabled={(!saveBtn.isValid || isDuplicate)}
                 > Создать </Button>
             </Space>
 

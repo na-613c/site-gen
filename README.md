@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# Генератор сайтов
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Сайт создан с помощью [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Скрипты
 
-In the project directory, you can run:
+Для начала работы с проектом надо установить зависимость введя в консоль `npm install` или короткую версию `npm i`.
 
-### `yarn start`
+В каталоге проекта вы можете запустить:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `yarn start` | `npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Запускает приложение в режиме разработки (живая dev-сборка). \
+Откройте [http://localhost:3000/site-gen#/](http://localhost:3000/site-gen#/), чтобы просмотреть его в браузере.
 
-### `yarn test`
+Страница перезагрузится, если вы внесете правки. \
+Вы также увидите любые ошибки ворса в консоли.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `yarn test` | `npm run test`
 
-### `yarn build`
+Запускает тестов в интерактивном режиме.\
+Подробнее можно прочитать здесь: [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `yarn build` | `npm run build`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Собирает прокт в папку `build`. \
+Он правильно связывает React в производственном режиме и оптимизирует сборку для достижения максимальной производительности.
+Сборка минифицирована, а имена файлов включают хеши. \
+После этого Ваше приложение готово к развертыванию на сервере!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Подробнее можно прочитать здесь: [deployment](https://facebook.github.io/create-react-app/docs/deployment).
 
-### `yarn eject`
+### `yarn eject` | `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Не советую использовать.**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Если вы не удовлетворены выбором инструмента сборки и конфигурации, вы можете eject в любое время. Эта команда удалит единственную зависимость сборки из вашего проекта.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `yarn predeploy` | `npm run predeploy`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Используется в скрипте ниже.
 
-## Learn More
+### `yarn deploy` | `npm run deploy`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Используется для публикации проекта в ветке `gh-pages` на GitHub.
+Подробнее можно прочитать здесь: [gh-pages](https://github.com/tschaub/gh-pages).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Выполеннные критерии
 
-### Code Splitting
+### Динамичность веб-страниц
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Внешний вид изменяется при изменении роутингов:\
 
-### Analyzing the Bundle Size
+1. [https://na-613c.github.io/web-gen/#/](https://na-613c.github.io/web-gen/#/) - Главная.\
+   Её внешний вид зависит от того, зарегестирован пользователь или нет. Так же при появлении новых записей в удалённой базе данных **изменяется таблица** со скписком всех сайтов.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. [https://na-613c.github.io/web-gen/#/login](https://na-613c.github.io/web-gen/#/login) - Регистрация.\
+   Страница которая предотвращает посещение не зарегистрированных пользователей конструктора.
 
-### Making a Progressive Web App
+3. [https://na-613c.github.io/web-gen/#/constructor](https://na-613c.github.io/web-gen/#/constructor) - Конструктор.\
+   Её внешний вид напрямую зависит от действий пользователя. Не зарегестрированный пользователь не может на ней попасть. При добавлении элементов **появляется поля с вводом данных**. Отображается **предпросмотр сайта в реальном времени**. Так же есть **защита** от пустых полей и **предупреждении о совпадении URL** при вводе (в реальном времени: например, если в момент создания данный URL не был занят, но в процессе создания сайта он был занят - вы увидите об это **сообщение**). При наведении на знак вопроса около поля ввода URL **всплывает подсказка**.
+   Так же при не прохождении валидации кнопка **создать будет отключена**.
+   Так же есть **предпреждение**, если пользователь заходит с устройства со "слишком" маленьким экраном. (Рекомендуется использовать альбомную ориентацию).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Регистрация.\
+   Внешний вид зависит от того, зарегестирован пользователь или нет. Если Вы не прошли регистрацию, там находится **кнопка войти**. Если пользователь вошёл - там отображается **аватарка** и **кнопка для выхода**. Если пользователь использует экран более 800 пикселей - **отображается его имя**. Если пользователь нажимает на кнопку выйти - **появляется собщение с предпреждением**.\
+   Так же регистрация нужна для удаления сайтов, которые вы уже создали. Есть **предупреждении об удалении**. Если сайт не принадлежит вам или вы не авторезированны, то **кнопка будет отключена**.
 
-### Advanced Configuration
+5. Просмотр сайтов.\
+   В таблице на [главной странице](https://na-613c.github.io/web-gen/#/) есть **список сайтов, которые можно посетить**. Для возвращения назад придётся использовать кнопку браузера "назад".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Производительность отрисовки
 
-### Deployment
+1. Для повышения производительности активно использовался хук **React.memo** и **PureComponent** (можно найти в компоненте [ElementForm](https://github.com/na-613c/web-gen/blob/master/src/components/constructor/generatorEl/ElementForm/ElementForm.jsx)).
+2. **React.lazy** использовался для ленивой загрузи страниц сохраненных сайтов. Можно увидеть в [App компоненте](https://github.com/na-613c/web-gen/blob/master/src/App.js).
+3. На [главной странице](https://na-613c.github.io/web-gen/#/) можно отобразить до 5, 10, 20, **50 и 100 одинаковых элементов** (ссылок на сайты). Для этого надо выбрать подходящее количество в выпадающе списке ( с компьютера ).
+4. **Анимацию при появлении и удалении элементов** можно увидеть на [странице конструктора](https://na-613c.github.io/web-gen/#/constructor).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Навигация в приложении
 
-### `yarn build` fails to minify
+1. Кнопки вперед и назад работают корректно.
+2. При нажатии **кнопки назад** во время создания сайта в [конструкторе](https://na-613c.github.io/web-gen/#/constructor) при заполненных полностью или частично полях появится **предпреждение о потере данных**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Кроссбраузерность
+
+Сделана **адаптивная вёрстка** при помощи дизайн системы [Ant Design](https://ant.design/). Так же при просмотре **с мобильного устройства пропадает имя пользователя**, **сокращаются фиксированная часть ссылки** при ввооде URL во время создания сайта и вёрстка становится более **портретной ориентации** или появляются **горизонтальные скроллы**(таблица на [главной странице](https://na-613c.github.io/web-gen/#/)).
+
+### Коммуникации
+
+Для хранения всех данных используется [Firebase](https://firebase.google.com/). Пользователи могут регестрироваться, **сохранять** и **просматривать** данные, которые отображаются частично измененными на страницах сайта. Эта база данных работает в режиме реального времени и при любых **изменениях данных** пользователь **сразу** узнает об этом. Это позволяет **обмениваться данными** с другими пользователями.
+
+### Модель данных
+
+1. Данные для хранения **всех** сгенерированныых сайтов **хранятся** в [Firebase](https://firebase.google.com/).
+2. Для работы с данными и объёмной логики использовалась библиотека [MobX](https://mobx.js.org/README.html). MobX - это библиотека, которая делает управление состоянием простым и масштабируемым за счет прозрачного применения функционального реактивного программирования (TFRP).
+
+### Сборка проекта
+
+1. Есть **dev-сборка** при помощи скрипта `yarn start` | `npm start`.
+2. Работающий проект размещен по ссылке [https://na-613c.github.io/web-gen/#/](https://na-613c.github.io/web-gen/#/). При необходимости можно собрать **prod-сборку** для запуска на своём сервере при помощи команды `yarn build` | `npm run build`.
+
+### Тесты
+
+Для запуска тестов надо ввести в консоль скрипт `yarn test` | `npm run test`.
+Были написанны следующие **тесты**:
+
+1. Связанные с отрисовкой компонентов:
+   * [Login.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/login/Login.test.js).
+
+    * [MyFooter.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/footer/MyFooter.test.js).
+
+    * [Loader.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/common/Loader.test.js).
+
+    * [App.test.js](https://github.com/na-613c/web-gen/blob/master/src/App.test.js).
+
+2. Связанные с состоянием:
+     * [TmpPageService.test.js](https://github.com/na-613c/web-gen/blob/master/src/mobx/TmpPageService.test.js) - основная логика работы с полями ввода данных.
+
+     * [FirebaseService.test.js](https://github.com/na-613c/web-gen/blob/master/src/mobx/FirebaseService.test.js).
+
+3. Связанные с утилитами:
+     * [validationSave.test.js](https://github.com/na-613c/web-gen/blob/master/src/utils/validationSave.test.js).
+
+     * [constructElements.test.js](https://github.com/na-613c/web-gen/blob/master/src/utils/constructElements.test.js).
+
+     * [ElementDOM.test.js](https://github.com/na-613c/web-gen/blob/master/src/model/ElementDOM.test.js).
+

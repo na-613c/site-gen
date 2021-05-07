@@ -74,20 +74,22 @@
 1. Для повышения производительности активно использовался хук **React.memo** и **PureComponent** (можно найти в компоненте [ElementForm](https://github.com/na-613c/web-gen/blob/master/src/components/constructor/generatorEl/ElementForm/ElementForm.jsx)).
 2. **React.lazy** использовался для ленивой загрузи страниц сохраненных сайтов. Можно увидеть в [App компоненте](https://github.com/na-613c/web-gen/blob/master/src/App.js).
 3. На [главной странице](https://na-613c.github.io/web-gen/#/) можно отобразить до 5, 10, 20, **50 и 100 одинаковых элементов** (ссылок на сайты). Для этого надо выбрать подходящее количество в выпадающе списке ( с компьютера ).
-4. **Анимацию при появлении и удалении элементов** можно увидеть на [странице конструктора](https://na-613c.github.io/web-gen/#/constructor).
+4. **Анимацию при появлении и удалении элементов** можно увидеть на [странице конструктора](https://na-613c.github.io/web-gen/#/constructor). Cделанна припомощи [Motion Design](https://motion.ant.design/). Tак же есть **css анимации** [загрузки](https://github.com/na-613c/web-gen/blob/master/src/components/common/Loader.jsx) и [стрелки](https://github.com/na-613c/web-gen/blob/master/src/components/common/LeftArrow/LeftArrow.jsx) около кнопки создания сайта.
 
 ### Навигация в приложении
 
-1. Кнопки вперед и назад работают корректно.
+1. Кнопки вперед и назад работают корректно. Отображение сильно зависит от изменений URL. Использовался HashRouter вместо BrowserRouter для корректной работы на github pages.
 2. При нажатии **кнопки назад** во время создания сайта в [конструкторе](https://na-613c.github.io/web-gen/#/constructor) при заполненных полностью или частично полях появится **предпреждение о потере данных**.
 
 ### Кроссбраузерность
 
-Сделана **адаптивная вёрстка** при помощи дизайн системы [Ant Design](https://ant.design/). Так же при просмотре **с мобильного устройства пропадает имя пользователя**, **сокращаются фиксированная часть ссылки** при ввооде URL во время создания сайта и вёрстка становится более **портретной ориентации** или появляются **горизонтальные скроллы**(таблица на [главной странице](https://na-613c.github.io/web-gen/#/)).
+<dd>Сделана <b>адаптивная вёрстка</b> при помощи дизайн системы <a href='https://ant.design/'>Ant Design</a>. Так же при просмотре <b>с мобильного устройства пропадает имя пользователя</b>, <b>сокращаются фиксированная часть ссылки</b> при ввооде URL во время создания сайта и вёрстка становится более <b>портретной ориентации</b> или появляются <b>горизонтальные скроллы</b> ( таблица на 
+<a href='https://na-613c.github.io/web-gen/#/'>главной странице</a> ).</dd>
+
 
 ### Коммуникации
 
-Для хранения всех данных используется [Firebase](https://firebase.google.com/). Пользователи могут регестрироваться, **сохранять** и **просматривать** данные, которые отображаются частично измененными на страницах сайта. Эта база данных работает в режиме реального времени и при любых **изменениях данных** пользователь **сразу** узнает об этом. Это позволяет **обмениваться данными** с другими пользователями.
+<dd>Для хранения всех данных используется <a href='https://firebase.google.com/'>Firebase</a>. Пользователи могут регестрироваться, <b>сохранять</b> и <b>просматривать</b> данные, которые отображаются частично измененными на страницах сайта. Эта база данных работает в режиме реального времени и при любых <b>изменениях данных</b> пользователь <b>сразу</b> узнает об этом. Это позволяет <b>обмениваться данными</b> с другими пользователями.</dd>
 
 ### Модель данных
 
@@ -105,23 +107,25 @@
 Были написанны следующие **тесты**:
 
 1. Связанные с отрисовкой компонентов:
-   * [Login.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/login/Login.test.js).
 
-    * [MyFooter.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/footer/MyFooter.test.js).
+   - [Login.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/login/Login.test.js).
 
-    * [Loader.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/common/Loader.test.js).
+   - [MyFooter.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/footer/MyFooter.test.js).
 
-    * [App.test.js](https://github.com/na-613c/web-gen/blob/master/src/App.test.js).
+   - [Loader.test.js](https://github.com/na-613c/web-gen/blob/master/src/components/common/Loader.test.js).
+
+   - [App.test.js](https://github.com/na-613c/web-gen/blob/master/src/App.test.js).
 
 2. Связанные с состоянием:
-     * [TmpPageService.test.js](https://github.com/na-613c/web-gen/blob/master/src/mobx/TmpPageService.test.js) - основная логика работы с полями ввода данных.
 
-     * [FirebaseService.test.js](https://github.com/na-613c/web-gen/blob/master/src/mobx/FirebaseService.test.js).
+   - [TmpPageService.test.js](https://github.com/na-613c/web-gen/blob/master/src/mobx/TmpPageService.test.js) - основная логика работы с полями ввода данных.
+
+   - [FirebaseService.test.js](https://github.com/na-613c/web-gen/blob/master/src/mobx/FirebaseService.test.js).
 
 3. Связанные с утилитами:
-     * [validationSave.test.js](https://github.com/na-613c/web-gen/blob/master/src/utils/validationSave.test.js).
 
-     * [constructElements.test.js](https://github.com/na-613c/web-gen/blob/master/src/utils/constructElements.test.js).
+   - [validationSave.test.js](https://github.com/na-613c/web-gen/blob/master/src/utils/validationSave.test.js).
 
-     * [ElementDOM.test.js](https://github.com/na-613c/web-gen/blob/master/src/model/ElementDOM.test.js).
+   - [constructElements.test.js](https://github.com/na-613c/web-gen/blob/master/src/utils/constructElements.test.js).
 
+   - [ElementDOM.test.js](https://github.com/na-613c/web-gen/blob/master/src/model/ElementDOM.test.js).

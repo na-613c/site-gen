@@ -1,0 +1,2 @@
+(this["webpackJsonpsite-gen"]=this["webpackJsonpsite-gen"]||[]).push([[3],{309:function(t,e,n){"use strict";n.r(e);var i=n(0),s=n.n(i),a=n(168),c=n(89),r=n(8);e.default=s.a.memo(Object(c.a)((function(t){var e=t.text;return Object(r.jsx)("div",{style:{width:"90%",margin:"20px auto"},children:Object(a.a)(e||"")})})))}}]);
+//# sourceMappingURL=3.90c1d80c.chunk.js.map

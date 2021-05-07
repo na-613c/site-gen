@@ -72,7 +72,7 @@
 
 1. Для повышения производительности активно использовался хук **React.memo** и **PureComponent** (можно найти в компоненте [ElementForm](https://github.com/na-613c/web-gen/blob/master/src/components/constructor/generatorEl/ElementForm/ElementForm.jsx)).
 2. **React.lazy** использовался для ленивой загрузки страниц сохраненных сайтов. Можно увидеть в [App компоненте](https://github.com/na-613c/web-gen/blob/master/src/App.js).
-3. На [главной странице](https://na-613c.github.io/web-gen/#/) можно отобразить до 5, 10, 20, **50 и 100 одинаковых элементов** (ссылок на сайты). Для этого надо выбрать подходящее количество в выпадающе списке ( с компьютера ).
+3. На [главной странице](https://na-613c.github.io/web-gen/#/) можно отобразить до 5, 10, 20, **50 и 100 одинаковых элементов** (ссылок на сайты). Для этого надо выбрать подходящее количество в выпадающем списке ( с компьютера ).
 4. **Анимацию при появлении и удалении элементов** можно увидеть на [странице конструктора](https://na-613c.github.io/web-gen/#/constructor). Cделанна припомощи [Motion Design](https://motion.ant.design/). Tак же есть **css анимации** [загрузки](https://github.com/na-613c/web-gen/blob/master/src/components/common/Loader.jsx) и [стрелки](https://github.com/na-613c/web-gen/blob/master/src/components/common/LeftArrow/LeftArrow.jsx) около кнопки создания сайта.
 
 ### Навигация в приложении

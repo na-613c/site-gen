@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { privateRoutes, publicRoutes } from "../routes";
 import { LOGIN_PAGE, MAIN_PAGE } from "../utils/consts";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Context } from "../index";
+import { Context } from "../App";
 
 const AppRouter = () => {
 

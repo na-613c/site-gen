@@ -2,7 +2,7 @@
   "name": "site-gen",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://na-613c.github.io/site-gen",
+  "homepage": "https://na-613c.github.io/web-gen",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

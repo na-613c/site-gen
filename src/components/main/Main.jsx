@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { CONSTRUCTOR_PAGE } from "../../utils/consts";
 import AllWebSites from "./allWebSites/AllWebSites";
 import { observer } from 'mobx-react-lite'
-import { Context } from '../../index'
+import { Context } from '../../App'
 
 
 const { Step } = Steps;

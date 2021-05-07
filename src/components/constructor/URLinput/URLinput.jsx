@@ -51,7 +51,7 @@ const URLinput = ({ url, setUrl, allUrl }) => {
                 help={field.help}
             >
                 <Input
-                    addonBefore={window.innerWidth > 800 ? "https://na-613c.github.io/site-gen" : "site-gen"}
+                    addonBefore={window.innerWidth > 800 ? "https://na-613c.github.io/web-gen" : "web-gen"}
                     maxLength={15}
                     style={{ width: window.innerWidth > 800 ? 400 : 240 }}
                     size='middle'

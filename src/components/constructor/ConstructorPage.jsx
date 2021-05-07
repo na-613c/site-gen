@@ -4,7 +4,7 @@ import ResultPage from './ResultPage/ResultPage';
 import URLinput from './URLinput/URLinput'
 import GeneratorEl from './generatorEl/GeneratorEl';
 import { observer } from 'mobx-react-lite'
-import { Context } from '../../index'
+import { Context } from '../../App'
 import { Prompt } from "react-router-dom";
 
 
@@ -22,7 +22,7 @@ const ConstructorPage = () => {
     isEmptyData = !!pageDOMtoString.length || !!url.length;
 
     const btn = (
-        <a href={`https://na-613c.github.io/site-gen#/${url}`} target='_blank' > Вы можете посетить сайт нажав на эту надпись.</a>
+        <a href={`https://na-613c.github.io/web-gen#/${url}`} target='_blank' > Вы можете посетить сайт нажав на эту надпись.</a>
     );
 
     const onClickSaveBtn = () => {

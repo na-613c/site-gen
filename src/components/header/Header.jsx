@@ -3,7 +3,7 @@ import { PageHeader, Button, Space, Avatar, Popconfirm } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { CONSTRUCTOR_PAGE, MAIN_PAGE } from "../../utils/consts";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Context } from "../../index";
+import { Context } from "../../App";
 import firebase from "firebase";
 
 

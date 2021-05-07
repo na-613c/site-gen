@@ -13,7 +13,7 @@ const AllWebSites = ({ firebaseService }) => {
             dataIndex: 'site',
             key: 'site',
             width: 340,
-            render: (url) => <NavLink to={`${url}`} key={url}>{`https://na-613c.github.io/site-gen#/${url}`}</NavLink>,
+            render: (url) => <NavLink to={`${url}`} key={url}>{`https://na-613c.github.io/web-gen#/${url}`}</NavLink>,
         }, {
             title: 'Имя создателя',
             dataIndex: 'displayName',

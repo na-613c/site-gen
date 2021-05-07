@@ -1,5 +1,4 @@
-import React, { useContext, Suspense } from 'react';
-import { Context } from "./index";
+import React, { createContext, Suspense } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
 import { HashRouter } from 'react-router-dom'
@@ -12,6 +11,10 @@ import { Layout } from 'antd';
 import { Route, Switch } from "react-router";
 import { observer } from 'mobx-react-lite'
 
+import { myFirebase } from './firebase/myFirebase'
+import store from './mobx/Store'
+
+export const Context = createContext(null)
 
 const TmpPage = React.lazy(() => import('./components/tmpPage/TmpPage'));
 
@@ -19,9 +22,7 @@ const { Content } = Layout;
 
 const App = () => {
 
-  const { auth, store } = useContext(Context)
-  const [user, loading, error] = useAuthState(auth)
-
+  const [user, loading, error] = useAuthState(myFirebase.auth)
   const sites = store.firebaseService.sites;
   const loadingStore = store.firebaseService.isLoading;
 
@@ -51,20 +52,22 @@ const App = () => {
   const isMobile = window.innerWidth < 640
 
   return (
-    <HashRouter>
-      <Switch>
-        {otherComponent}
-        <Route>
-          <Header />
-          <Content style={{ padding: isMobile ? 10 : 50, background: '#f0f2f5' }}>
-            <Content style={{ background: '#fff', padding: isMobile ? 10 : 50 }}>
-              <AppRouter />
+    <Context.Provider value={{ ...myFirebase, store }}>
+      <HashRouter>
+        <Switch>
+          {otherComponent}
+          <Route>
+            <Header />
+            <Content style={{ padding: isMobile ? 10 : 50, background: '#f0f2f5' }}>
+              <Content style={{ background: '#fff', padding: isMobile ? 10 : 50 }}>
+                <AppRouter />
+              </Content>
             </Content>
-          </Content>
-          <MyFooter />
-        </Route>
-      </Switch>
-    </HashRouter>
+            <MyFooter />
+          </Route>
+        </Switch>
+      </HashRouter>
+    </Context.Provider>
   );
 }
 
